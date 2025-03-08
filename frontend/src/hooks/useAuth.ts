@@ -12,8 +12,9 @@ import {
 } from "@/client"
 import { handleError } from "@/utils"
 
-const isLoggedIn = () => {
-  return localStorage.getItem("access_token") !== null
+const  isLoggedIn = () => {
+  // return localStorage.getItem("access_token") !== null
+  return true;
 }
 
 const useAuth = () => {
@@ -51,7 +52,8 @@ const useAuth = () => {
   const loginMutation = useMutation({
     mutationFn: login,
     onSuccess: () => {
-      navigate({ to: "/" })
+      // navigate({ to: "/" })
+      console.log("Logged in!"); // No redirect
     },
     onError: (err: ApiError) => {
       handleError(err)
@@ -60,7 +62,7 @@ const useAuth = () => {
 
   const logout = () => {
     localStorage.removeItem("access_token")
-    navigate({ to: "/login" })
+    // navigate({ to: "/login" })
   }
 
   return {
